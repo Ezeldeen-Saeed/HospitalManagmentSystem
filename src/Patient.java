@@ -3,7 +3,7 @@ import java.util.Date;
 
 public class Patient extends User {
 
-    private ArrayList<String> medicalHistory;
+    private ArrayList<String> medicalHistory = new ArrayList<>();
     private Doctor assignedDoctor;
     private String currentPrescription;
     private String currentDiagnose;
@@ -11,6 +11,10 @@ public class Patient extends User {
 
     public Patient(String name, int age, boolean gender, String email, String phone, String password) {
         super(name, age, gender, email, phone, password);
+    }
+
+    public void setDateOfVisit(Date dateOfVisit) {
+        this.dateOfVisit = dateOfVisit;
     }
 
     public void setAssignedDoctor(Doctor assignedDoctor) {
@@ -46,6 +50,18 @@ public class Patient extends User {
     }
 
     public void requestMedicalReport() {
-        System.out.printf(String.format("========= MEDICAL REPORT =========\nDate of Visit:     %s\nPatient Name:         %s\nAge:          %d\nGender:         %s\n----------------------------------\nDiagnosis:      %s\nTreatment:          %s\nDoctor In Charge:           %s\nMedical History:            %s\n=================================="), this.dateOfVisit, this.getName(), this.getAge(), this.getGender(), this.getCurrentDiagnose(), this.currentPrescription, this.getAssignedDoctor(), this.medicalHistory);
+        System.out.printf(String.format("""
+                        ========= MEDICAL REPORT =========
+                        Date of Visit:              %s
+                        Patient Name:               %s
+                        Age:                        %d
+                        Gender:                     %s
+                        ----------------------------------
+                        Diagnosis:                  %s
+                        Treatment:                  %s
+                        Doctor In Charge:           Dr. %s
+                        Medical History:            %s
+                        ==================================""",
+                this.dateOfVisit, this.getName(), this.getAge(), this.getGender() ? "Male" : "Female", this.getCurrentDiagnose(), this.currentPrescription, this.getAssignedDoctor().getName(), this.medicalHistory));
     }
 }

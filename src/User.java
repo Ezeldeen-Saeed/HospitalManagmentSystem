@@ -21,6 +21,8 @@ public class User {
         this.userID = UUID.randomUUID();
 
         setName(name);
+        setAge(age);
+        setGender(gender);
         setEmail(email);
         setPhone(phone);
         setPassword(password);
